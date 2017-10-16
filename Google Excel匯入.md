@@ -12,7 +12,7 @@
 |---------|---------|----------|--------|---------------|-------------|---------|---------|---------|---|------------|-----------|
 |i519批次| url ....|2017-10-16 17:18| A | B | C | D | E | F | G | H | I |
 
-[點擊前往](https://docs.google.com/spreadsheets/d/1kOg4aIkvg6xWmg70dL3p3R6i-V71YD2jSm3niZ3gf68/edit#gid=0) 範例連結.
+[範例連結](https://docs.google.com/spreadsheets/d/1kOg4aIkvg6xWmg70dL3p3R6i-V71YD2jSm3niZ3gf68/edit#gid=0)
 
 
 ## 欄位說明
