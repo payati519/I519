@@ -9,7 +9,7 @@
 ## Base URL
 
 ```
-http://{evn}.i519.com.tw/payment/
+https://{evn}.i519.com.tw/payment/
 ```
 
 - `{evn}` 為環境參數： `test` 為測試環境, `cloud` 為正式環境。
