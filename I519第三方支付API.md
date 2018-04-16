@@ -64,7 +64,7 @@ Reuest body 必須是 JSON 格式。下列為支援的欄位:
 ### API
 
 ```
-POST {baseUrl}/payment/api/details
+POST {baseUrl}/payment/api/details?t={token}
 ```
 
 ### Body
