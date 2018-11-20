@@ -157,7 +157,7 @@ Reuest body 必須是 JSON 格式。下列為支援的欄位：
             $("button").click(function(){
                 $.ajax({
                     method: "POST",
-                    url: "http://{env}.i519.com.tw/payment/api/details",
+                    url: "https://{evn}.i519.com.tw/payment/api/details",
                     contentType: "application/json; charset=UTF-8",
                     data: JSON.stringify([{
                           "channelCode": "a.test.channel.code",
