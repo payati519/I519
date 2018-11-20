@@ -83,7 +83,7 @@ Reuest body 必須是 JSON 格式。下列為支援的欄位：
 | `payExpiryDate` | 繳費期限 | `yyyy-MM-dd HH:mm[:ss]` | 19 | Y | C |
 | `remark` | 交易內容摘要 | | 255 | N | C |
 | `username` | 經手人帳號 | 貴公司經手人之使用者帳號 | 50 | Y | C |
-| `returnUrl` | 已繳費通知url | 客戶端系統用來接收已繳費通知的rul，若無請帶`null`  | 255 | N | C |
+| `returnUrl` | 已繳費通知url | 客戶端系統用來接收已繳費通知的rul，若不帶此項或帶`null`則套用預設url | 255 | N | C |
 
 > 型態: `C`文字；`D`日期；`I`整數；`B`布林
 
