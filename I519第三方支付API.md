@@ -77,12 +77,13 @@ Reuest body 必須是 JSON 格式。下列為支援的欄位：
 | `mobile` | 消費者手機號碼 | | 12 | Y | C |
 | `email` | 消費者email | | 50 | N | C |
 | `payNo` | 交易序號 | 各商家可對應銷帳使用之號碼 (唯一不可重複) | 20 | Y | C |
-| `payType` | 繳費模式 | `CSTORE`, `ATM`, `CCARD`, `EACH` | 10 | Y | C |
+| `payType` | 繳費模式 | `CSTORE`, `ATM`, `CCARD`, `eACH` | 10 | Y | C |
 | `collectAgc` | 超商選單 | `null`, 若payType選擇`CSTORE`才**可且需**填入: `IBON`, `FAMIPORT` | 10 | N | C |
 | `payAmount` | 交易金額 | 數字，不包含 `-` | 10 | Y | I |
 | `payExpiryDate` | 繳費期限 | `yyyy-MM-dd HH:mm[:ss]` | 19 | Y | C |
 | `remark` | 交易內容摘要 | | 255 | N | C |
 | `username` | 經手人帳號 | 經手人(業績歸屬)之使用者帳號 | 50 | Y | C |
+| `bookPayNoticeDateDiv` | 預約繳費簡訊發送日 | `yyyy-MM-dd` 授權扣款適用 | 10 | Y | C |
 | `returnUrl` | 已繳費通知url | 客戶端系統用來接收已繳費通知的rul，若不帶此項或帶`null`則套用預設url | 255 | N | C |
 
 > 型態: `C`文字；`D`日期；`I`整數；`B`布林
