@@ -276,3 +276,45 @@ Reuest body 會是 JSON 格式：
 		</script>
 	</body>
 </html>```
+
+## 信用卡授權扣款簡訊發送
+									      
+### API
+
+```
+POST {baseUrl}/payment/api/ccardAuthMms?t={token}
+```
+
+### Body
+
+Reuest body 必須是 JSON 格式。下列為支援的欄位：
+
+| Name | 名稱 | 說明 | 最大長度 | 必填 | 型態 |
+|------|-----|---------|-----|------|-------|
+| `channelCode` | 通路代號 | 通路代號 | 50 | Y | C | |
+| `mobile` | 扣款者手機號碼 | | 12 | Y | C |
+| `effectiveDateTo` | 授權截止日 | `yyyy-MM-dd` | 10 | Y | C |
+| `remark` | 授權扣款事項摘要 | | 255 | N | C |
+
+> 型態: `C`文字；`D`日期；`I`整數；`B`布林
+
+```json
+[{
+  "channelCode": "a.test.channel.code",
+  "mobile": "a.test.mobile",
+  "effectiveDateTo": "a.test.expiry.date",
+  "remark": "a.test.remark"
+}, {
+	...
+}]
+```
+
+#### 訊息代碼清單
+
+| Type | Code | 說明 | 問題描述 |
+|------|------|------|--------|
+| INFO | `I000` | 處理成功 | |
+| ERROR | `E001` | 傳送資料無內文 | Input jsonData無內容 |
+| ERROR | `E002` | 傳送資料格式錯誤 | Input jsonData中，任一欄位格式有誤 |
+| ERROR | `E003` | 資料已過期 | token有誤或已過期 |
+| ERROR | `E999` | 未知錯誤 | |
