@@ -296,6 +296,7 @@ Reuest body 必須是 JSON 格式。下列為支援的欄位：
 | `mobile` | 扣款者手機號碼 | | 12 | Y | C |
 | `effectiveDateTo` | 授權截止日 | `yyyy-MM-dd` | 10 | Y | C |
 | `remark` | 授權扣款事項摘要 | | 255 | N | C |
+| `returnUrl` | 授權完成通知url | | 255 | N | C |
 
 > 型態: `C`文字；`D`日期；`I`整數；`B`布林
 
