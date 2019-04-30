@@ -320,3 +320,41 @@ Reuest body 必須是 JSON 格式。下列為支援的欄位：
 | ERROR | `E002` | 傳送資料格式錯誤 | Input jsonData中，任一欄位格式有誤 |
 | ERROR | `E003` | 資料已過期 | token有誤或已過期 |
 | ERROR | `E999` | 未知錯誤 | |
+
+
+### 測試方式
+
+貴公司開發人員可以將以下程式碼修改`place.your.url.here `後，存儲成`.html`檔案，以瀏覽器開啟即可自己測試：
+
+```html
+<!doctype html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		<button type="button"">Click to mock nofity from i519</button>
+		<script type="text/javascript">
+			$("button").click(function(){
+			    $.post("place.your.url.here",
+			    {
+			        channelCode: "5190000000",
+			        mobile: "0911222333",
+			        applyDate: "2016-12-31T17:46",
+			        effectiveDateTo: "2016-12-31",
+			        remark: "REST test",
+			        code: "I000"
+			    },
+			    function(data, status, xhr){
+			    	console.log("response status code: " + xhr.status);
+			    	if (xhr.status !== 200) {
+			    		console.error("Something went wrong..");
+			    	}
+			    });
+			});
+		</script>
+	</body>
+</html>
+```
+
