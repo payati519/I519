@@ -311,6 +311,33 @@ Reuest body 必須是 JSON 格式。下列為支援的欄位：
 }]
 ```
 
+### Output
+
+| Name | 名稱 | 說明 |
+|-----|------|------|
+| `code` | 代碼 | |
+| `result` | pinCode |新增的交易序號所對應的pinCode |
+| `message` | 訊息array | 訊息補充說明 |
+
+
+以 json 格式回傳
+
+```json
+{
+ "code": "...",
+ "result": [
+        {
+            "payNo": "...",
+            "pinCode": "..."
+        }
+    ],
+ "message": [
+ 		"...",
+ 		"..."
+ 	]
+}
+```
+
 #### 訊息代碼清單
 
 | Type | Code | 說明 | 問題描述 |
