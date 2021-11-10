@@ -430,7 +430,7 @@ Reuest body 必須是 JSON 格式。下列為支援的欄位：
 | Name | 名稱 | 說明 |
 |-----|------|------|
 | `code` | 代碼 | |
-| `result` | pinCode |新增的交易序號所對應的pinCode |
+| `result` | payNo | |
 | `message` | 訊息array | 訊息補充說明 |
 
 
@@ -441,8 +441,7 @@ Reuest body 必須是 JSON 格式。下列為支援的欄位：
  "code": "...",
  "result": [
         {
-            "payNo": "...",
-            "pinCode": "..."
+            "payNo": "..."
         }
     ],
  "message": [
