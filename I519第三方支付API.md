@@ -77,7 +77,7 @@ Reuest body 必須是 JSON 格式。下列為支援的欄位：
 | `mobile` | 消費者手機號碼 | | 12 | Y | C |
 | `email` | 消費者email | | 50 | N | C |
 | `payNo` | 交易序號 | 各商家可對應銷帳使用之號碼 (唯一不可重複) | 20 | Y | C |
-| `payType` | 繳費模式 | `CSTORE`, `ATM`, `CCARD`, `eACH` | 10 | Y | C |
+| `payType` | 繳費模式 | `CSTORE`, `ATM`, `CCARD`, `eACH`, `EPAY` | 10 | Y | C |
 | `collectAgc` | 超商選單 | `null`, 若payType選擇`CSTORE`才**可且需**填入: `IBON`, `FAMIPORT` | 10 | N | C |
 | `payAmount` | 交易金額 | 數字，不包含 `-` | 10 | Y | I |
 | `payExpiryDate` | 繳費期限 | `yyyy-MM-dd HH:mm[:ss]`。若payType=`ATM`，i519系統會自動將`HH:mm:ss`存成最後一刻 | 19 | Y | C |
@@ -380,3 +380,84 @@ Reuest body 必須是 JSON 格式。下列為支援的欄位：
 </html>
 ```
 
+
+## 接收交易結果(只適用於EPAY)
+
+### API
+
+```
+POST {baseUrl}/payment/api/payback?t={token}
+```
+
+### Body
+
+Reuest body 必須是 JSON 格式。下列為支援的欄位：
+
+| Name | 名稱 | 說明 | 最大長度 | 必填 | 型態 |
+|------|-----|---------|-----|------|-------|
+| `channelCode` | 通路代號 | 註冊後由i519提供 | 50 | Y | C | |
+| `mobile` | 消費者手機號碼 | | 12 | Y | C |
+| `payNo` | 交易序號 | 各商家可對應銷帳使用之號碼 (唯一不可重複) | 20 | Y | C |
+| `payType` | 繳費模式 |  `EPAY` | 10 | Y | C |
+| `collectAgc` | 代收機構 | `null`, 若payType選擇`EPAY`才**可且需**填入: `EZWallet `, `LPM`, `JKO` | 10 | N | C |
+| `payAmount` | 交易金額 | 數字，不包含 `-` | 10 | Y | I |
+| `payExpiryDate` | 繳費期限 | `yyyy-MM-dd HH:mm[:ss]`| 19 | Y | C |
+| `remark` | 交易內容摘要 | 可將ID回寫(第一碼英文+末3碼)| 255 | N | C | 
+| `paymentStatus` | 繳費狀態 | `UNPAID `, `PAID`| 50 | Y | C |
+| `payDate` | 繳費日期 | `yyyy-MM-dd HH:mm:ss`| 19 | Y | C |
+
+> 型態: `C`文字；`D`日期；`I`整數；`B`布林
+
+```json
+[{
+  "channelCode": "a.test.channel.code",
+  "mobile": "0988-888-888", 
+  "payNo": "A001",
+  "payType": "EPAY",
+  "collectAgc": "EZWallet",
+  "payAmount": 1000,
+  "payExpiryDate": "2016-11-03 11:15",
+  "remark": "A789",
+  "paymentStatus": "PAID",
+  "payDate": "2016-11-03 11:15:23"
+}, {
+	...
+}]
+```
+
+### Output
+
+| Name | 名稱 | 說明 |
+|-----|------|------|
+| `code` | 代碼 | |
+| `result` | pinCode |新增的交易序號所對應的pinCode |
+| `message` | 訊息array | 訊息補充說明 |
+
+
+以 json 格式回傳
+
+```json
+{
+ "code": "...",
+ "result": [
+        {
+            "payNo": "...",
+            "pinCode": "..."
+        }
+    ],
+ "message": [
+ 		"...",
+ 		"..."
+ 	]
+}
+```
+
+#### 訊息代碼清單
+
+| Type | Code | 說明 | 問題描述 |
+|------|------|------|--------|
+| INFO | `I000` | 處理成功 | |
+| ERROR | `E001` | 傳送資料無內文 | Input jsonData無內容 |
+| ERROR | `E002` | 傳送資料格式錯誤 | Input jsonData中，任一欄位格式有誤 |
+| ERROR | `E003` | 傳送資料內容錯誤 | 資料內容正確性驗證不通過 |
+| ERROR | `E999` | 未知錯誤 | |
