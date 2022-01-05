@@ -81,7 +81,7 @@ Reuest body 必須是 JSON 格式。下列為支援的欄位：
 | `collectAgc` | 超商選單 | `null`, 若payType選擇`CSTORE`才**可且需**填入: `IBON`, `FAMIPORT` | 10 | N | C |
 | `payAmount` | 交易金額 | 數字，不包含 `-` | 10 | Y | I |
 | `payExpiryDate` | 繳費期限 | `yyyy-MM-dd HH:mm[:ss]`。若payType=`ATM`，i519系統會自動將`HH:mm:ss`存成最後一刻 | 19 | Y | C |
-| `remark` | 交易內容摘要 | | 255 | N | C |
+| `remark` | 交易內容摘要 |若payType選擇`EPAY`，可輸入`EPAY;`開頭備註，將經由中台發送繳費通知 | 255 | N | C |
 | `username` | 經手人帳號 | 經手人(業績歸屬)之使用者帳號 | 50 | Y | C |
 | `returnUrl` | 已繳費通知url | 客戶端系統用來接收已繳費通知的rul，若不帶此項或帶`null`則套用預設url | 255 | N | C |
 | `bookPayNoticeDate` | 預約繳費簡訊發送日 | `yyyy-MM-dd` 授權扣款適用 | 10 | N | C |
