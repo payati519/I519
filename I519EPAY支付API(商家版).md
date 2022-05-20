@@ -204,7 +204,7 @@ Reuest body 會是 JSON 格式：
 | `payDate` | 繳費日期 | `yyyy-MM-ddTHH:mm:ss` | 19 | D |
 | `paymentStatus` | 繳費狀態 | `UNPAID`, `PAID`, `OVERDUE`, `REFUND` | 7 | C |
 | `payType` | 繳費模式 | `EPAY`| 6 | C | 
-| `collectAgc` | 代收機構 | `EZWallet` ,`LPM`,`JKO` | 8 | C | 
+| `collectAgc` | 代收機構 | `EZWallet` ,`LPM`,`JKO`,`PlusPay`,`PXPay` | 8 | C | 
 | `mobile` | 消費者手機號碼 | | 10 | C |
 | `totalAmt` | 繳費金額 | | 7 | I |
 | `code` | 訊息代碼 | | 4 | C |
